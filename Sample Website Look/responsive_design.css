@@ -1,0 +1,18 @@
+@media screen and (max-width:1038px){
+    .toggle-menu-button{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+    .navbar .navbar-items{
+        display: none;
+    }
+}
+
+@media screen and (max-width:350px){
+    .navbar .brand-name{
+        font-size: 1.4rem;
+    }
+}
