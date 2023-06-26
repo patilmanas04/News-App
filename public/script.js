@@ -12,7 +12,7 @@ if(navBar.dataset.theme === "dark"){
     navBarItem[1].classList.add("navbar-item-dark");
     navBarItem[3].classList.add("navbar-item-dark");
     toggleMenuButton.forEach(path => {path.style.fill = "#fff"});
-    closeButton.style.fill = "#fff";
+    // closeButton.style.fill = "#fff";
 }
 else{
     navBar.classList.remove("navbar-dark");
@@ -21,7 +21,7 @@ else{
     navBarItem[1].classList.remove("navbar-item-dark");
     navBarItem[3].classList.remove("navbar-item-dark");
     toggleMenuButton.forEach(path => {path.style.fill = "#000"});
-    closeButton.style.fill = "#000";
+    // closeButton.style.fill = "#000";
 }
 
 
