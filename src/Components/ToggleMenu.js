@@ -9,7 +9,7 @@ class ToggleMenu extends Component{
                         <li className="navbar-item"><a href="/" className="active">Home</a></li>
                         <li className="navbar-item"><a href="/">About Us</a></li>
                         <li className="navbar-item">
-                            <input type="checkbox" id="darkmode-toggle" />
+                            <input type="checkbox" className="darkmode-toggle" />
                             <label htmlFor="darkmode-toggle" className="toggle-button"></label>
                         </li>
                         <li className="close-button">

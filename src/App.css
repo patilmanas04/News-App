@@ -11,11 +11,13 @@
   justify-content: space-between;
   border-bottom: 1px solid #dadce0;
   background: #fff;
+  transition: 0.3s;
 }
-.navbar-dark{
+.navbar[data-theme="dark"]{
   background: rgb(32, 33, 36);
   color: #fff;
   border-bottom-color: #3c4043;
+  transition: 0.3s;
 }
 
 .navbar .brand-name{
@@ -27,9 +29,11 @@
   color: #333333;
   -webkit-user-select: none;
   user-select: none;
+  transition: 0.3s;
 }
-.navbar .brand-name.brand-name-dark{
+.navbar .brand-name[data-theme="dark"]{
   color: #fff;
+  transition: 0.3s;
 }
 
 .navbar .navbar-items{
@@ -52,14 +56,16 @@
   align-items: center;
   justify-content: center;
   color: #121212;
+  transition: 0.3s;
 }
-.navbar-item-dark{
+.navbar .navbar-items .navbar-list .navbar-item a[data-theme="dark"]{
   color: #fff;
+  transition: 0.3s;
 }
 
 .active{
   color: 
-  #288cff;
+  #288cff !important;
   border-bottom: 2px solid 
   #288cff;
 }
@@ -147,6 +153,10 @@ input[type="checkbox"]:checked + .toggle-button:after {
 .toggle-menu-button{
   display: none;
 }
+.toggle-menu-button[data-theme="dark"] svg path{
+  fill: #fff;
+  transition: 0.3s;
+}
 
 /* Toggle Menu */
 .toggle-menu .navbar-list{
@@ -163,11 +173,13 @@ input[type="checkbox"]:checked + .toggle-button:after {
   list-style: none;
   font-size: 1.4rem;
   box-shadow: -5px 0px 15px rgba(0,0,0,0.3);
+  transition: 0.3s;
 }
-.toggle-menu .navbar-list.navbar-list-dark{
+.toggle-menu .navbar-list[data-theme="dark"]{
   background: rgb(32, 33, 36);
   color: #fff;
   box-shadow: -5px 0px 15px rgba(255,255,255,0.1);
+  transition: 0.3s;
 }
 
 .toggle-menu .navbar-list .navbar-item{
@@ -197,7 +209,6 @@ input[type="checkbox"]:checked + .toggle-button:after {
 
 /* Container Styles */
 .container{
-  background: #fff;
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
@@ -206,10 +217,11 @@ input[type="checkbox"]:checked + .toggle-button:after {
   padding: 0 2rem;
   font-family: 'Roboto', sans-serif;
   font-family: "Jost", sans-serif;
+  transition: 0.3s;
 }
-.container.container-dark{
-  background: #121212;
+.container[data-theme="dark"]{
   color: #fff;
+  transition: 0.3s;
 }
 
 .container .news-heading .news-heading-title{
@@ -217,9 +229,15 @@ input[type="checkbox"]:checked + .toggle-button:after {
   font-size: 32px;
   text-transform: uppercase;
   font-weight: 600;
+  transition: 0.3s;
 }
-.container .news-heading .news-heading-title.news-heading-title-dark{
+.container .news-heading .news-heading-title[data-theme="dark"]{
   color: #fff;
+  transition: 0.3s;
+}
+.container .news-heading .news-heading-title span[data-theme="dark"]{
+  color: #fff !important;
+  transition: 0.3s;
 }
 
 .container .news-heading .news-heading-title span{
@@ -229,9 +247,11 @@ input[type="checkbox"]:checked + .toggle-button:after {
 .container .news-heading .news-heading-description{
   font-weight: 600;
   color: #121212;
+  transition: 0.3s;
 }
-.container .news-heading .news-heading-description.news-heading-description-dark{
+.container .news-heading .news-heading-description[data-theme="dark"]{
   color: #fff;
+  transition: 0.3s;
 }
 
 /* news */
@@ -252,12 +272,13 @@ input[type="checkbox"]:checked + .toggle-button:after {
   border-radius: 4px;
   overflow: hidden;
   box-shadow: 0 3px 6px 0 rgba(65,69,73,.3), 0 1px 3px 1px rgba(65,69,73,.15);
-  transition: all 0.4s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
-.container .news .news-card.news-card-dark{
+.container .news .news-card[data-theme="dark"]{
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid #3a3a3d;
   box-shadow: black 1px 1px 6px;
+  transition: 0.3s;
 }
 
 /* news card content */
@@ -272,9 +293,11 @@ input[type="checkbox"]:checked + .toggle-button:after {
   color: #121212;
   margin-bottom: 0.5rem;
   border-bottom: 2px solid #288cff;
+  transition: 0.3s;
 }
-.container .news .news-card .news-card-content .news-card-content-title.news-card-content-title-dark{
+.container .news .news-card .news-card-content .news-card-content-title[data-theme="dark"]{
   color: #fff;
+  transition: 0.3s;
 }
 
 .container .news .news-card .news-card-content .news-card-content-description{
@@ -282,9 +305,11 @@ input[type="checkbox"]:checked + .toggle-button:after {
   font-weight: 500;
   color: #121212;
   margin-bottom: 0.5rem;
+  transition: 0.3s;
 }
-.container .news .news-card .news-card-content .news-card-content-description.news-card-content-description-dark{
+.container .news .news-card .news-card-content .news-card-content-description[data-theme="dark"]{
   color: #fff;
+  transition: 0.3s;
 }
 
 /* Read more button styles */

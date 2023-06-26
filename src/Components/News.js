@@ -6,11 +6,7 @@ class News extends Component{
         return (
             <>
             <div className="news">
-                <NewsCard/>
-                <NewsCard/>
-                <NewsCard/>
-                <NewsCard/>
-                <NewsCard/>
+                
             </div>
             </>
         )

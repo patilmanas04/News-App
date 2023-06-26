@@ -6,25 +6,41 @@ import Container from './Components/Container';
 import ToggleMenu from './Components/ToggleMenu';
 
 class App extends Component{
-    // componentDidMount(){
-    //     const script = document.createElement("script");
-    //     script.src = "script.js";
-    //     script.async = true;
-    //     document.body.appendChild(script);
-    // }
+    componentDidMount(){
+        const script = document.createElement("script");
+        script.src = "script.js";
+        script.async = true;
+        document.body.appendChild(script);
+    }
 
-    // componentWillUnmount(){
-    //     if(script){
-    //         document.body.removeChild(script);
-    //     }
-    // }
+    constructor(){
+        super();
+        this.state = {
+            theme: "light"
+        }
+    }
+
+    changeTheme = ()=>{
+        if(this.state.theme === "light"){
+            this.setState({
+                theme: "dark"
+            });
+            document.body.style.backgroundColor = "#121212";
+        }
+        else{
+            this.setState({
+                theme: "light"
+            });
+            document.body.style.backgroundColor = "#fff";
+        }
+    }
 
     render(){
         return (
             <>
-                <Navbar />
-                <Container/>
-                <ToggleMenu/>
+                <Navbar changeTheme={this.changeTheme} theme={this.state.theme}/>
+                <Container theme={this.state.theme}/>
+                <ToggleMenu theme={this.state.theme}/>
             </>
         );
     }
