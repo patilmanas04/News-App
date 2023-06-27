@@ -294,6 +294,7 @@ input[type="checkbox"]:checked + .toggle-button:after {
   margin-bottom: 0.5rem;
   border-bottom: 2px solid #288cff;
   transition: 0.3s;
+  padding-bottom: 0.5rem;
 }
 .container .news .news-card .news-card-content .news-card-content-title[data-theme="dark"]{
   color: #fff;
@@ -339,4 +340,43 @@ input[type="checkbox"]:checked + .toggle-button:after {
 /* Disabled class */
 .disable{
   display: none;
+}
+
+
+/* Page Controls */
+.container .page-controls{
+  margin-top: 3rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-top: 2px solid #288cff;
+}
+
+.container .page-controls .control-btn{
+  font-size: 15px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  margin-top: 1rem;
+  outline: none;
+  height: 30px;
+  width: fit-content;
+  border-radius: 4px;
+  border: none;
+  background: #288cff;
+  color: #fff;
+  box-sizing: content-box;
+  cursor: pointer;
+  padding: 3px 10px;
+  transition: all 0.2s ease-out;
+}
+.container .page-controls .control-btn:hover{
+  background: #0075f9;
+  cursor: pointer;
+}
+
+.container .page-controls .control-btn.disabled-btn{
+  opacity: 0.5;
+  pointer-events: none;
 }
