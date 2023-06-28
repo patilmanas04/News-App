@@ -380,3 +380,50 @@ input[type="checkbox"]:checked + .toggle-button:after {
   opacity: 0.5;
   pointer-events: none;
 }
+
+
+/* Loading Skeleton */
+.news-card[data-theme="dark"]{
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid #3a3a3d;
+  box-shadow: black 1px 1px 6px;
+  transition: 0.3s;
+}
+
+.news-card .skeleton{
+  opacity: .7;
+  animation: skeleton-animation 1s linear infinite alternate;
+}
+
+@keyframes skeleton-animation {
+  0%{
+    background: hsl(200, 20%, 70%);
+  }
+
+  100%{
+    background: hsl(200, 20%, 95%);
+  }
+}
+
+.news-card .skeleton-img{
+  height: 170px;
+  width: 100%;
+}
+
+.news-card .skeleton-text{
+  height: 0.7rem;
+  margin-bottom: 0.25rem;
+  border-radius: 0.20rem;
+}
+
+.news-card .skeleton-text:last-child{
+  margin-bottom: 0;
+  width: 80%;
+}
+
+.news-card .skeleton-btn{
+  margin-top: 1rem;
+  height: 30px;
+  width: 100px;
+  border-radius: 4px;
+}

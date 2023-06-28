@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import NewsCard from "./NewsCard";
+import LoadingSkeleton from "./LoadingSkeleton";
 
 class News extends Component{
     constructor(){
@@ -7,13 +8,14 @@ class News extends Component{
         this.state = {
             articles: [],
             currentPage: 1,
-            maxPages: undefined
+            maxPages: undefined,
+            loading: false
         }
     }
 
     async componentDidMount(){
         let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=6a2d58fd50ad44d8a3044ac1840275bd&page=${this.state.currentPage}`;
-        
+        this.setState({loading: true});
         let data = await fetch(url);
 
         try{
@@ -21,7 +23,8 @@ class News extends Component{
                 let parsedData = await data.json();
                 this.setState({
                     articles: parsedData.articles,
-                    maxPages: Math.ceil(parsedData.totalResults/20)
+                    maxPages: Math.ceil(parsedData.totalResults/20),
+                    loading: false
                 })
             }
             else{
@@ -35,7 +38,7 @@ class News extends Component{
 
     changeToNextPage = async()=>{
         let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=6a2d58fd50ad44d8a3044ac1840275bd&page=${this.state.currentPage+1}`;
-        
+        this.setState({loading: true});
         let data = await fetch(url);
 
         try{
@@ -43,7 +46,8 @@ class News extends Component{
                 let parsedData = await data.json();
                 this.setState({
                     articles: parsedData.articles,
-                    currentPage: this.state.currentPage+=1
+                    currentPage: this.state.currentPage+=1,
+                    loading: false
                 })
             }
             else{
@@ -57,7 +61,7 @@ class News extends Component{
 
     changeToPrevPage = async()=>{
         let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=6a2d58fd50ad44d8a3044ac1840275bd&page=${this.state.currentPage-1}`;
-        
+        this.setState({loading: true});
         let data = await fetch(url);
 
         try{
@@ -65,7 +69,8 @@ class News extends Component{
                 let parsedData = await data.json();
                 this.setState({
                     articles: parsedData.articles,
-                    currentPage: this.state.currentPage-=1
+                    currentPage: this.state.currentPage-=1,
+                    loading: false
                 })
             }
             else{
@@ -82,18 +87,20 @@ class News extends Component{
         return (
             <>
             <div className="news">
+                {this.state.loading && <LoadingSkeleton theme={theme}/>}
                 {
-                    this.state.articles.map((article, index)=>{
+                    !this.state.loading && this.state.articles.map((article, index)=>{
                         return <NewsCard key={index} theme={theme} title={article.title} description={article.description} url={article.url} urlToImage={article.urlToImage}/>
                     })
                 }
             </div>
-            <div className="page-controls">
-                <button type="button" className={`control-btn prev-btn ${(this.state.currentPage<=1)?'disabled':'enabled'}-btn`} onClick={this.changeToPrevPage}>&larr; Previous page</button>
-                
-                <button type="button" className={`control-btn next-btn ${(this.state.currentPage>=this.state.maxPages)?'disabled':'enabled'}-btn`} onClick={this.changeToNextPage}>Next page &rarr;</button>
-            </div>
-            {console.log(this.state.maxPages)}
+            {
+                !this.state.loading && <div className="page-controls">
+                    <button type="button" className={`control-btn prev-btn ${(this.state.currentPage<=1)?'disabled':'enabled'}-btn`} onClick={this.changeToPrevPage}>&larr; Previous page</button>
+                    
+                    <button type="button" className={`control-btn next-btn ${(this.state.currentPage>=this.state.maxPages)?'disabled':'enabled'}-btn`} onClick={this.changeToNextPage}>Next page &rarr;</button>
+                </div>
+            }
             </>
         )
     }
