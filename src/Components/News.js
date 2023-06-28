@@ -1,8 +1,17 @@
 import React, { Component } from "react";
 import NewsCard from "./NewsCard";
 import LoadingSkeleton from "./LoadingSkeleton";
+import PropTypes from 'prop-types';
 
 class News extends Component{
+    static defaultProps = {
+        category: "general"
+    }
+
+    static propTypes = {
+        category: PropTypes.string.isRequired
+    }
+
     constructor(){
         super();
         this.state = {
@@ -14,7 +23,7 @@ class News extends Component{
     }
 
     async componentDidMount(){
-        let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=6a2d58fd50ad44d8a3044ac1840275bd&page=${this.state.currentPage}`;
+        let url = `https://newsapi.org/v2/top-headlines?country=in&category=${this.props.category}&apiKey=6a2d58fd50ad44d8a3044ac1840275bd&page=${this.state.currentPage}`;
         this.setState({loading: true});
         let data = await fetch(url);
 
@@ -37,7 +46,7 @@ class News extends Component{
     }
 
     changeToNextPage = async()=>{
-        let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=6a2d58fd50ad44d8a3044ac1840275bd&page=${this.state.currentPage+1}`;
+        let url = `https://newsapi.org/v2/top-headlines?country=in&category=${this.props.category}&apiKey=6a2d58fd50ad44d8a3044ac1840275bd&page=${this.state.currentPage+1}`;
         this.setState({loading: true});
         let data = await fetch(url);
 
@@ -60,7 +69,7 @@ class News extends Component{
     }
 
     changeToPrevPage = async()=>{
-        let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=6a2d58fd50ad44d8a3044ac1840275bd&page=${this.state.currentPage-1}`;
+        let url = `https://newsapi.org/v2/top-headlines?country=in&category=${this.props.category}&apiKey=6a2d58fd50ad44d8a3044ac1840275bd&page=${this.state.currentPage-1}`;
         this.setState({loading: true});
         let data = await fetch(url);
 
@@ -90,7 +99,7 @@ class News extends Component{
                 {this.state.loading && <LoadingSkeleton theme={theme}/>}
                 {
                     !this.state.loading && this.state.articles.map((article, index)=>{
-                        return <NewsCard key={index} theme={theme} title={article.title} description={article.description} url={article.url} urlToImage={article.urlToImage}/>
+                        return <NewsCard key={index} theme={theme} title={article.title} description={article.description} url={article.url} urlToImage={article.urlToImage} author={article.author} date={article.publishedAt}/>
                     })
                 }
             </div>
