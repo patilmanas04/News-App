@@ -6,6 +6,10 @@
     color: #121212;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 body{
     font-family: 'Belanosima', sans-serif;
 }

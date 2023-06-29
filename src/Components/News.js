@@ -12,14 +12,19 @@ class News extends Component{
         category: PropTypes.string.isRequired
     }
 
-    constructor(){
-        super();
+    capitalizeString = (string)=>{
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+    constructor(props){
+        super(props);
         this.state = {
             articles: [],
             currentPage: 1,
             maxPages: undefined,
             loading: false
         }
+        document.title = `${this.capitalizeString(this.props.category)} - Expresss News`;
     }
 
     async componentDidMount(){
@@ -66,6 +71,8 @@ class News extends Component{
         catch(error){
             console.log(error)
         }
+
+        window.scrollTo(0, 0);
     }
 
     changeToPrevPage = async()=>{
@@ -89,6 +96,8 @@ class News extends Component{
         catch(error){
             console.log(error)
         }
+
+        window.scrollTo(0, 0);
     }
 
     render(){

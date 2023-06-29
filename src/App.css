@@ -30,10 +30,12 @@
   -webkit-user-select: none;
   user-select: none;
   transition: 0.3s;
+  text-shadow: 2px 1px 0 #00000070;
 }
 .navbar .brand-name[data-theme="dark"]{
   color: #fff;
   transition: 0.3s;
+  text-shadow: 2px 1px 0 #ffffff70;
 }
 
 .navbar .navbar-items{
