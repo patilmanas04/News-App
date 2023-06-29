@@ -22,7 +22,7 @@ class News extends Component{
             articles: [],
             currentPage: 1,
             maxPages: undefined,
-            loading: false
+            loading: false,
         }
         document.title = `${this.capitalizeString(this.props.category)} - Expresss News`;
     }
@@ -30,16 +30,21 @@ class News extends Component{
     async componentDidMount(){
         let url = `https://newsapi.org/v2/top-headlines?country=in&category=${this.props.category}&apiKey=6a2d58fd50ad44d8a3044ac1840275bd&page=${this.state.currentPage}`;
         this.setState({loading: true});
+        this.props.updateLoadingProgress(30);
         let data = await fetch(url);
+        this.props.updateLoadingProgress(60);
 
         try{
             if(data.ok){
                 let parsedData = await data.json();
+                this.props.updateLoadingProgress(80);
                 this.setState({
                     articles: parsedData.articles,
                     maxPages: Math.ceil(parsedData.totalResults/20),
-                    loading: false
+                    loading: false,
                 })
+                this.props.updateLoadingProgress(100);
+
             }
             else{
                 throw new Error("Something went wrong while fetching data, please refresh to try again.");
@@ -60,7 +65,7 @@ class News extends Component{
                 let parsedData = await data.json();
                 this.setState({
                     articles: parsedData.articles,
-                    currentPage: this.state.currentPage+=1,
+                    currentPage: this.state.currentPage+1,
                     loading: false
                 })
             }
@@ -85,7 +90,7 @@ class News extends Component{
                 let parsedData = await data.json();
                 this.setState({
                     articles: parsedData.articles,
-                    currentPage: this.state.currentPage-=1,
+                    currentPage: this.state.currentPage-1,
                     loading: false
                 })
             }
@@ -106,9 +111,10 @@ class News extends Component{
             <>
             <div className="news">
                 {this.state.loading && <LoadingSkeleton theme={theme}/>}
+
                 {
-                    !this.state.loading && this.state.articles.map((article, index)=>{
-                        return <NewsCard key={index} theme={theme} title={article.title} description={article.description} url={article.url} urlToImage={article.urlToImage} author={article.author} date={article.publishedAt}/>
+                    !this.state.loading && this.state.articles.map((article, index) => {
+                        return <NewsCard key={index} theme={theme} title={article.title} description={article.description} url={article.url} urlToImage={article.urlToImage} author={article.author} date={article.publishedAt} />
                     })
                 }
             </div>

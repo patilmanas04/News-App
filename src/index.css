@@ -17,3 +17,8 @@ body.body-dark{
     background: #121212;
     color: #fff;
 }
+
+button{
+    -webkit-user-select: none;
+    user-select: none;
+}

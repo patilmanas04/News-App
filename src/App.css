@@ -65,7 +65,7 @@
   transition: 0.3s;
 }
 
-.active{
+.navbar-item .active{
   color: 
   #288cff !important;
   border-bottom: 2px solid 
@@ -477,10 +477,15 @@ input[type="checkbox"]:checked + .toggle-button:after {
   padding: 3px 10px;
   border: 1px solid #288cff;
   transition: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-.container .category.active-btn{
-  background: #288cff;
-  color: #fff;
-  transition: 0.2s;
+.container .active{
+  background: #288cff !important;
+  color: #fff !important;
+  transition: 0.2s !important;
 }

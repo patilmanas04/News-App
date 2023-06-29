@@ -4,9 +4,10 @@ import './App.css';
 import './AppResponsive.css';
 import Container from './Components/Container';
 import ToggleMenu from './Components/ToggleMenu';
+import LoadingBar from 'react-top-loading-bar';
 
 class App extends Component{
-    componentDidMount(){
+    componentDidMount = ()=>{
         const script = document.createElement("script");
         script.src = "script.js";
         script.async = true;
@@ -16,8 +17,15 @@ class App extends Component{
     constructor(){
         super();
         this.state = {
-            theme: "light"
+            theme: "light",
+            loadingProgress: 10,
         }
+    }
+
+    updateLoadingProgress = (currentProgress)=>{
+        this.setState({
+            loadingProgress: currentProgress,
+        })
     }
 
     changeTheme = ()=>{
@@ -38,8 +46,13 @@ class App extends Component{
     render(){
         return (
             <>
+                <LoadingBar 
+                    height={2.5}
+                    color='#f11946'
+                    progress={this.state.loadingProgress}
+                />
                 <Navbar changeTheme={this.changeTheme} theme={this.state.theme}/>
-                <Container theme={this.state.theme}/>
+                <Container theme={this.state.theme} updateLoadingProgress={this.updateLoadingProgress}/>
                 <ToggleMenu theme={this.state.theme}/>
             </>
         );
