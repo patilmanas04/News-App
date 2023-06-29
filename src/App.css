@@ -165,7 +165,7 @@ input[type="checkbox"]:checked + .toggle-button:after {
   position: fixed;
   z-index: 999;
   top: 0;
-  right: 0;
+  right: -100%;
   width: 300px;
   height: 100vh;
   background: #fff;
@@ -214,7 +214,7 @@ input[type="checkbox"]:checked + .toggle-button:after {
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
-  margin-top: 4.5rem;
+  margin-top: 4rem;
   margin-bottom: 6rem;
   padding: 0 2rem;
   font-family: 'Roboto', sans-serif;
@@ -258,7 +258,7 @@ input[type="checkbox"]:checked + .toggle-button:after {
 
 /* news */
 .container .news{
-  margin-top: 3rem;
+  margin-top: 2.3rem;
   columns: 3;
   gap: 2rem;
   width: 100%;

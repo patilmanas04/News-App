@@ -8,20 +8,8 @@ import {
 } from "react-router-dom";
 
 class Container extends Component{
-    // componentDidMount = ()=>{
-    //     // const allCategories = document.querySelectorAll('.category');
-    //     // allCategories.forEach((category) => {
-    //     //     category.addEventListener("click", (e) => {
-    //     //         allCategories.forEach((category) => {
-    //     //             category.classList.remove('active-btn');
-    //     //         })
-    //     //         e.target.classList.add('active-btn');
-    //     //     })
-    //     // })
-    // }
-
     render(){
-        let {theme, updateLoadingProgress} = this.props;
+        let {theme, updateLoadingProgress, newsApiKey} = this.props;
         return(
             <>
             <Router basename="/">
@@ -40,20 +28,21 @@ class Container extends Component{
                         <p className="news-heading-description" data-theme={theme}>Get the latest news from around the world</p>
                     </div>
                     <Routes>
-                        <Route exact path="/" element={<News updateLoadingProgress={updateLoadingProgress}  key="general" theme={theme} category="general" setMaxPages={this.setMaxPages}/>}></Route>
+                        <Route exact path="/" element={<News updateLoadingProgress={updateLoadingProgress}  key="general" theme={theme} category="general"  newsApiKey={newsApiKey}/>}></Route>
 
-                        <Route exact path="/business" element={<News updateLoadingProgress={updateLoadingProgress}  key="business" theme={theme} category="business" setMaxPages={this.setMaxPages}/>}></Route>
+                        <Route exact path="/business" element={<News updateLoadingProgress={updateLoadingProgress}  key="business" theme={theme} category="business"  newsApiKey={newsApiKey}/>}></Route>
 
-                        <Route exact path="/entertainment" element={<News updateLoadingProgress={updateLoadingProgress}  key="entertainment" theme={theme} category="entertainment" setMaxPages={this.setMaxPages}/>}></Route>
+                        <Route exact path="/entertainment" element={<News updateLoadingProgress={updateLoadingProgress}  key="entertainment" theme={theme} category="entertainment"  newsApiKey={newsApiKey}/>}></Route>
 
-                        <Route exact path="/health" element={<News updateLoadingProgress={updateLoadingProgress}  key="health" theme={theme} category="health" setMaxPages={this.setMaxPages}/>}></Route>
+                        <Route exact path="/health" element={<News updateLoadingProgress={updateLoadingProgress}  key="health" theme={theme} category="health"  newsApiKey={newsApiKey}/>}></Route>
 
-                        <Route exact path="/science" element={<News updateLoadingProgress={updateLoadingProgress}  key="science" theme={theme} category="science" setMaxPages={this.setMaxPages}/>}></Route>
+                        <Route exact path="/science" element={<News updateLoadingProgress={updateLoadingProgress}  key="science" theme={theme} category="science"  newsApiKey={newsApiKey}/>}></Route>
 
-                        <Route exact path="/sports" element={<News updateLoadingProgress={updateLoadingProgress}  key="sports" theme={theme} category="sports" setMaxPages={this.setMaxPages}/>}></Route>
+                        <Route exact path="/sports" element={<News updateLoadingProgress={updateLoadingProgress}  key="sports" theme={theme} category="sports"  newsApiKey={newsApiKey}/>}></Route>
 
-                        <Route exact path="/technology" element={<News updateLoadingProgress={updateLoadingProgress}  key="technology" theme={theme} category="technology" setMaxPages={this.setMaxPages}/>}></Route>
-                        <Route exact path="/technology" element={<News updateLoadingProgress={updateLoadingProgress}  key="technology" theme={theme} category="technology" setMaxPages={this.setMaxPages}/>}></Route>
+                        <Route exact path="/technology" element={<News updateLoadingProgress={updateLoadingProgress}  key="technology" theme={theme} category="technology"  newsApiKey={newsApiKey}/>}></Route>
+
+                        <Route exact path="/technology" element={<News updateLoadingProgress={updateLoadingProgress}  key="technology" theme={theme} category="technology"  newsApiKey={newsApiKey}/>}></Route>
                     </Routes>
                 </section>
             </Router>

@@ -15,16 +15,43 @@
     .navbar .brand-name{
         font-size: 1.4rem;
     }
-}
 
-@media screen and (max-width: 984px){
-    .container .news{
-        columns: 2;
+    .container .news-heading .news-heading-title{
+        font-size: 29px;
+    }
+
+    .container .news-heading .news-heading-description{
+        font-size: 14.5px;
     }
 }
 
-@media screen and (max-width: 609px){
+@media screen and (max-width:984px){
+    .container .news{
+        columns: 2;
+    }
+
+    .container{
+        margin-top: 3rem;
+    }
+}
+
+@media screen and (max-width:609px){
     .container .news{
         columns: 1;
+    }
+
+    .container{
+        padding: 0 1rem;
+        margin-top: 3rem;
+    }
+}
+
+@media screen and (max-width:310px){
+    .navbar .brand-name{
+        font-size: 1.2rem;
+    }
+
+    .toggle-menu .navbar-list{
+        width: 100%;
     }
 }

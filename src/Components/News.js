@@ -27,11 +27,11 @@ class News extends Component{
         document.title = `${this.capitalizeString(this.props.category)} - Expresss News`;
     }
 
-    async componentDidMount(){
-        let url = `https://newsapi.org/v2/top-headlines?country=in&category=${this.props.category}&apiKey=6a2d58fd50ad44d8a3044ac1840275bd&page=${this.state.currentPage}`;
+    updateArticles = async(pageNo)=>{
+        const url = `https://newsapi.org/v2/top-headlines?country=in&category=${this.props.category}&apiKey=${this.props.newsApiKey}&page=${pageNo?pageNo:this.state.currentPage}`;
         this.setState({loading: true});
         this.props.updateLoadingProgress(30);
-        let data = await fetch(url);
+        const data = await fetch(url);
         this.props.updateLoadingProgress(60);
 
         try{
@@ -50,59 +50,28 @@ class News extends Component{
                 throw new Error("Something went wrong while fetching data, please refresh to try again.");
             }
         }
+
         catch(error){
             console.log(error)
         }
+    }
+
+    async componentDidMount(){
+        this.updateArticles()
     }
 
     changeToNextPage = async()=>{
-        let url = `https://newsapi.org/v2/top-headlines?country=in&category=${this.props.category}&apiKey=6a2d58fd50ad44d8a3044ac1840275bd&page=${this.state.currentPage+1}`;
-        this.setState({loading: true});
-        let data = await fetch(url);
-
-        try{
-            if(data.ok){
-                let parsedData = await data.json();
-                this.setState({
-                    articles: parsedData.articles,
-                    currentPage: this.state.currentPage+1,
-                    loading: false
-                })
-            }
-            else{
-                throw new Error("Something went wrong while fetching data, please refresh to try again.");
-            }
-        }
-        catch(error){
-            console.log(error)
-        }
-
-        window.scrollTo(0, 0);
+        this.setState({
+            currentPage: this.state.currentPage+1
+        })
+        this.updateArticles(this.state.currentPage+1);
     }
 
     changeToPrevPage = async()=>{
-        let url = `https://newsapi.org/v2/top-headlines?country=in&category=${this.props.category}&apiKey=6a2d58fd50ad44d8a3044ac1840275bd&page=${this.state.currentPage-1}`;
-        this.setState({loading: true});
-        let data = await fetch(url);
-
-        try{
-            if(data.ok){
-                let parsedData = await data.json();
-                this.setState({
-                    articles: parsedData.articles,
-                    currentPage: this.state.currentPage-1,
-                    loading: false
-                })
-            }
-            else{
-                throw new Error("Something went wrong while fetching data, please refresh to try again.");
-            }
-        }
-        catch(error){
-            console.log(error)
-        }
-
-        window.scrollTo(0, 0);
+        this.setState({
+            currentPage: this.state.currentPage-1
+        })
+        this.updateArticles(this.state.currentPage-1);
     }
 
     render(){

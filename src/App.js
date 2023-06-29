@@ -7,11 +7,23 @@ import ToggleMenu from './Components/ToggleMenu';
 import LoadingBar from 'react-top-loading-bar';
 
 class App extends Component{
+    newsApiKey = process.env.REACT_APP_NEWS_API_KEY;
+
     componentDidMount = ()=>{
         const script = document.createElement("script");
         script.src = "script.js";
         script.async = true;
         document.body.appendChild(script);
+
+        const toggleMenuButton = document.querySelector(".toggle-menu-button");
+        const toggleMenu = document.querySelector(".toggle-menu .navbar-list");
+        const closeButton = document.querySelector(".toggle-menu .navbar-list .close-button");
+        toggleMenuButton.addEventListener("click", ()=>{
+            toggleMenu.style.right = "0"
+        })
+        closeButton.addEventListener("click", ()=>{
+            toggleMenu.style.right = "-100%";
+        })
     }
 
     constructor(){
@@ -52,7 +64,7 @@ class App extends Component{
                     progress={this.state.loadingProgress}
                 />
                 <Navbar changeTheme={this.changeTheme} theme={this.state.theme}/>
-                <Container theme={this.state.theme} updateLoadingProgress={this.updateLoadingProgress}/>
+                <Container theme={this.state.theme} updateLoadingProgress={this.updateLoadingProgress} newsApiKey={this.newsApiKey}/>
                 <ToggleMenu theme={this.state.theme}/>
             </>
         );
