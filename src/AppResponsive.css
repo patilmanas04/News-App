@@ -1,13 +1,14 @@
-@media screen and (max-width:1038px){
-    .toggle-menu-button{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
+@media screen and (max-width:866px){
+    .navbar #search-news{
+        display: none;
     }
 
-    .navbar .navbar-items{
-        display: none;
+    .container #search-news{
+        display: block;
+    }
+
+    .navbar .navbar-items .navbar-list .navbar-item{
+        margin-right: 0;
     }
 }
 

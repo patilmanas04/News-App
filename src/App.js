@@ -3,7 +3,6 @@ import Navbar from './Components/Navbar';
 import './App.css';
 import './AppResponsive.css';
 import Container from './Components/Container';
-import ToggleMenu from './Components/ToggleMenu';
 import LoadingBar from 'react-top-loading-bar';
 
 class App extends Component{
@@ -14,23 +13,13 @@ class App extends Component{
         script.src = "script.js";
         script.async = true;
         document.body.appendChild(script);
-
-        const toggleMenuButton = document.querySelector(".toggle-menu-button");
-        const toggleMenu = document.querySelector(".toggle-menu .navbar-list");
-        const closeButton = document.querySelector(".toggle-menu .navbar-list .close-button");
-        toggleMenuButton.addEventListener("click", ()=>{
-            toggleMenu.style.right = "0"
-        })
-        closeButton.addEventListener("click", ()=>{
-            toggleMenu.style.right = "-100%";
-        })
     }
 
     constructor(){
         super();
         this.state = {
             theme: "light",
-            loadingProgress: 10,
+            loadingProgress: 10
         }
     }
 
@@ -63,9 +52,10 @@ class App extends Component{
                     color='#f11946'
                     progress={this.state.loadingProgress}
                 />
-                <Navbar changeTheme={this.changeTheme} theme={this.state.theme}/>
+
+                <Navbar changeTheme={this.changeTheme} theme={this.state.theme} updateSearchTerm={this.updateSearchTerm}/>
+
                 <Container theme={this.state.theme} updateLoadingProgress={this.updateLoadingProgress} newsApiKey={this.newsApiKey}/>
-                <ToggleMenu theme={this.state.theme}/>
             </>
         );
     }

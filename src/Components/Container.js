@@ -14,6 +14,7 @@ class Container extends Component{
             <>
             <Router basename="/">
                 <section className="container" data-theme={theme}>
+
                     <div className="categories">
                             <NavLink to="/" className="category">General</NavLink>
                             <NavLink to="/business" className="category">Business</NavLink>
@@ -23,10 +24,12 @@ class Container extends Component{
                             <NavLink to="/sports" className="category">Sports</NavLink>
                             <NavLink to="/technology" className="category">Technology</NavLink>
                     </div>
+
                     <div className="news-heading">
                         <h1 className="news-heading-title" data-theme={theme}>Top <span data-theme={theme}>Stories</span></h1>
                         <p className="news-heading-description" data-theme={theme}>Get the latest news from around the world</p>
                     </div>
+
                     <Routes>
                         <Route exact path="/" element={<News updateLoadingProgress={updateLoadingProgress}  key="general" theme={theme} category="general"  newsApiKey={newsApiKey}/>}></Route>
 
