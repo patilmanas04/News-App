@@ -4,6 +4,11 @@ import './App.css';
 import './AppResponsive.css';
 import Container from './Components/Container';
 import LoadingBar from 'react-top-loading-bar';
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route
+} from "react-router-dom";
 
 class App extends Component{
     newsApiKey = process.env.REACT_APP_NEWS_API_KEY;
@@ -47,15 +52,32 @@ class App extends Component{
     render(){
         return (
             <>
+            <Router basename='/'>
                 <LoadingBar 
                     height={2.5}
                     color='#f11946'
                     progress={this.state.loadingProgress}
                 />
 
-                <Navbar changeTheme={this.changeTheme} theme={this.state.theme} updateSearchTerm={this.updateSearchTerm}/>
+                <Navbar changeTheme={this.changeTheme} theme={this.state.theme}/>
 
-                <Container theme={this.state.theme} updateLoadingProgress={this.updateLoadingProgress} newsApiKey={this.newsApiKey}/>
+                <Routes>
+                        <Route exact path="/" element={<Container theme={this.state.theme} updateLoadingProgress={this.updateLoadingProgress} key="general" category="general" newsApiKey={this.newsApiKey}/>}></Route>
+
+                        <Route exact path="/business" element={<Container theme={this.state.theme} updateLoadingProgress={this.updateLoadingProgress} key="business" category="business" newsApiKey={this.newsApiKey}/>}></Route>
+
+                        <Route exact path="/entertainment" element={<Container theme={this.state.theme} updateLoadingProgress={this.updateLoadingProgress} key="entertainment" category="entertainment" newsApiKey={this.newsApiKey}/>}></Route>
+
+                        <Route exact path="/health" element={<Container theme={this.state.theme} updateLoadingProgress={this.updateLoadingProgress} key="health" category="health" newsApiKey={this.newsApiKey}/>}></Route>
+
+                        <Route exact path="/science" element={<Container theme={this.state.theme} updateLoadingProgress={this.updateLoadingProgress} key="science" category="science" newsApiKey={this.newsApiKey}/>}></Route>
+
+                        <Route exact path="/sports" element={<Container theme={this.state.theme} updateLoadingProgress={this.updateLoadingProgress} key="sports" category="sports" newsApiKey={this.newsApiKey}/>}></Route>
+
+                        <Route exact path="/technology" element={<Container theme={this.state.theme} updateLoadingProgress={this.updateLoadingProgress} key="technology" category="technology" newsApiKey={this.newsApiKey}/>}></Route>
+                </Routes>
+                
+            </Router>
             </>
         );
     }
