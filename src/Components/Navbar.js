@@ -32,11 +32,6 @@ class Navbar extends Component{
                             <label htmlFor="dark-mode-toggle1" className="toggle-mode-button1"  onClick={changeTheme}></label>
                         </li>
                     </ul>
-
-                    {/* <form id="search-news">
-                        <input type="text" className="search" placeholder="Search for topics" onChange={this.handleInputChange}/>
-                        <button type="button" className="search-button" onClick={this.handleClick}>Search</button>
-                    </form> */}
                 </div>
             </nav>
             </>
