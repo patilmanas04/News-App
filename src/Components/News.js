@@ -65,6 +65,7 @@ class News extends Component{
             currentPage: this.state.currentPage+1
         })
         this.updateArticles(this.state.currentPage+1);
+        window.scrollTo(0, 0);
     }
 
     changeToPrevPage = async()=>{
@@ -72,6 +73,7 @@ class News extends Component{
             currentPage: this.state.currentPage-1
         })
         this.updateArticles(this.state.currentPage-1);
+        window.scrollTo(0, 0);
     }
 
     render(){
